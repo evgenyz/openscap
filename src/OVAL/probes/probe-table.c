@@ -115,8 +115,8 @@
 #include "unix/linux/selinuxsecuritycontext_probe.h"
 #endif
 
-#ifdef OPENSCAP_PROBE_LINUX_OPENSHIFT
-#include "unix/linux/openshift_probe.h"
+#ifdef OPENSCAP_PROBE_LINUX_OPENSHIFTSERVICE
+#include "unix/linux/openshiftservice_probe.h"
 #endif
 
 #ifdef OPENSCAP_PROBE_LINUX_SYSTEMDUNITDEPENDENCY

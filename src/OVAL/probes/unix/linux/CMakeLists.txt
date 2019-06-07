@@ -90,10 +90,10 @@ if(OPENSCAP_PROBE_LINUX_SELINUXSECURITYCONTEXT)
 endif()
 
 #TODO: openshift API
-if(OPENSCAP_PROBE_LINUX_OPENSHIFT)
+if(OPENSCAP_PROBE_LINUX_OPENSHIFTSERVICE)
 	list(APPEND LINUX_PROBES_SOURCES
-		"openshift_probe.c"
-		"openshift_probe.h"
+		"openshiftservice_probe.c"
+		"openshiftservice_probe.h"
 	)
 endif()
 
