@@ -12,12 +12,12 @@ libfind_pkg_check_modules(OPENSHIFTCOMPLIANCE_PKGCONF openshiftcompliance)
 
 # Include dir
 find_path(OPENSHIFTCOMPLIANCE_INCLUDE_DIR
-  NAMES openshiftcompliance.h
+  NAMES libopenshiftcompliance.h
   HINTS ${OPENSHIFTCOMPLIANCE_PKGCONF_INCLUDE_DIRS}
 )
 
 # Finally the library itself
-find_library(GCONF_LIBRARY
+find_library(OPENSHIFTCOMPLIANCE_LIBRARY
   NAMES openshiftcompliance
   HINTS ${OPENSHIFTCOMPLIANCE_PKGCONF_LIBRARY_DIRS}
 )

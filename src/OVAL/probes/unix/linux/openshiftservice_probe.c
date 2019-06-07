@@ -59,6 +59,7 @@ static int get_selinuxboolean(SEXP_t *ut_ent, probe_ctx *ctx)
 	int err = 1;
 	SEXP_t *item, *val;
     char * unit_name;
+    bool result = false;
     
     val = probe_ent_getval(ut_ent);
 
@@ -70,12 +71,16 @@ static int get_selinuxboolean(SEXP_t *ut_ent, probe_ctx *ctx)
     unit_name = SEXP_string_cstr(val);
     SEXP_free (val);
 
-    int auditd_complies = machineconfig_systemd_unit_complies("auditd.service");
+    int auditd_complies = machineconfig_systemd_unit_complies(unit_name);
+
+    if (auditd_complies == 1) {
+        result = true;
+    }
 
     item = probe_item_create(
             OVAL_LINUX_OPENSHIFTSERVICE, NULL,
             "unit", OVAL_DATATYPE_STRING, unit_name,
-            "enabled",  OVAL_DATATYPE_BOOLEAN, true,
+            "enabled",  OVAL_DATATYPE_BOOLEAN, result,
             NULL);
     probe_item_collect(ctx, item);
 
