@@ -1,6 +1,6 @@
 /**
- * @file   openshift_probe.c
- * @brief  openshift probe
+ * @file   openshiftservice_probe.c
+ * @brief  openshiftservice_probe probe
  * @author "Evgeny Kolesnikov" <ekolesni@redhat.com>
  *
  *  TODO: This probe is for processing openshift_object.
@@ -30,7 +30,7 @@
  */
 
 /*
- * openshift probe:
+ * openshiftservice probe:
  *
  * name
  * TODO: ...
@@ -57,14 +57,27 @@
 static int get_selinuxboolean(SEXP_t *ut_ent, probe_ctx *ctx)
 {
 	int err = 1;
-	SEXP_t *item;
+	SEXP_t *item, *val;
+    char * unit_name;
+    
+    val = probe_ent_getval(ut_ent);
+
+    if (val == NULL) {
+        SEXP_free (ut_ent);
+        return (PROBE_ENOVAL);
+    }
+
+    unit_name = SEXP_string_cstr(val);
+    SEXP_free (val);
 
     item = probe_item_create(
             OVAL_LINUX_OPENSHIFTSERVICE, NULL,
-            "unit", OVAL_DATATYPE_SEXP, ut_ent,
+            "unit", OVAL_DATATYPE_STRING, unit_name,
             "enabled",  OVAL_DATATYPE_BOOLEAN, true,
             NULL);
     probe_item_collect(ctx, item);
+
+    free(unit_name);
 
 	return 0;
 }

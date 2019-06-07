@@ -20,11 +20,11 @@
  *      Evgeny Kolesnikov <ekolesni@redhat.com>
  */
 
-#ifndef OPENSCAP_OPENSHIFT_PROBE_H
-#define OPENSCAP_OPENSHIFT_PROBE_H
+#ifndef OPENSCAP_OPENSHIFTSERVICE_PROBE_H
+#define OPENSCAP_OPENSHIFTSERVICE_PROBE_H
 
 #include "probe-api.h"
 
-int openshift_probe_main(probe_ctx *ctx, void *arg);
+int openshiftservice_probe_main(probe_ctx *ctx, void *arg);
 
-#endif /* OPENSCAP_OPENSHIFT_PROBE_H */
+#endif /* OPENSCAP_OPENSHIFTSERVICE_PROBE_H */

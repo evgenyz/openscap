@@ -285,6 +285,9 @@ static const probe_table_entry_t probe_table[] = {
 #ifdef OPENSCAP_PROBE_LINUX_SYSTEMDUNITPROPERTY
 	{OVAL_LINUX_SYSTEMDUNITPROPERTY, NULL, systemdunitproperty_probe_main, NULL, NULL},
 #endif
+#ifdef OPENSCAP_PROBE_LINUX_OPENSHIFTSERVICE
+	{OVAL_LINUX_OPENSHIFTSERVICE, NULL, openshiftservice_probe_main, NULL, NULL},
+#endif
 #ifdef OPENSCAP_PROBE_SOLARIS_ISAINFO
 	{OVAL_SOLARIS_ISAINFO, NULL, isainfo_probe_main, NULL, NULL},
 #endif
