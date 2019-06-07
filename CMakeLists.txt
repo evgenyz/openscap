@@ -141,6 +141,9 @@ find_package(LibXml2 REQUIRED)
 find_package(LibXslt REQUIRED)
 find_package(BZip2)
 
+set(ENV{PKG_CONFIG_PATH} ${OSCPL_PATH})
+find_package(OpenShiftCompliance)
+
 # PThread
 set(CMAKE_THREAD_PREFER_PTHREAD)
 set(THREADS_PREFER_PTHREAD_FLAG)
@@ -265,7 +268,7 @@ cmake_dependent_option(OPENSCAP_PROBE_LINUX_SELINUXBOOLEAN "Linux selinuxboolean
 cmake_dependent_option(OPENSCAP_PROBE_LINUX_SELINUXSECURITYCONTEXT "Linux selinuxsecuritycontext probe" ON "ENABLE_PROBES_LINUX; SELINUX_FOUND" OFF)
 cmake_dependent_option(OPENSCAP_PROBE_LINUX_SYSTEMDUNITDEPENDENCY "Linux systemdunitdependency probe" ON "ENABLE_PROBES_LINUX; DBUS_FOUND" OFF)
 cmake_dependent_option(OPENSCAP_PROBE_LINUX_SYSTEMDUNITPROPERTY "Linux systemdunitproperty probe" ON "ENABLE_PROBES_LINUX; DBUS_FOUND" OFF)
-cmake_dependent_option(OPENSCAP_PROBE_LINUX_OPENSHIFTSERVICE "Linux openshiftservice probe" ON "ENABLE_PROBES_LINUX; SELINUX_FOUND" OFF)
+cmake_dependent_option(OPENSCAP_PROBE_LINUX_OPENSHIFTSERVICE "Linux openshiftservice probe" ON "ENABLE_PROBES_LINUX; OPENSHIFTCOMPLIANCE_FOUND" OFF)
 
 # SOLARIS PROBES
 cmake_dependent_option(OPENSCAP_PROBE_SOLARIS_ISAINFO "Solaris isainfo probe" ON "ENABLE_PROBES_SOLARIS" OFF)

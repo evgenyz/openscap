@@ -51,7 +51,7 @@
 #include "probe-api.h"
 #include "probe/entcmp.h"
 
-#include <selinux/selinux.h>
+#include <libopenshiftcompliance.h>
 #include "openshiftservice_probe.h"
 
 static int get_selinuxboolean(SEXP_t *ut_ent, probe_ctx *ctx)
@@ -69,6 +69,8 @@ static int get_selinuxboolean(SEXP_t *ut_ent, probe_ctx *ctx)
 
     unit_name = SEXP_string_cstr(val);
     SEXP_free (val);
+
+    int auditd_complies = machineconfig_systemd_unit_complies("auditd.service");
 
     item = probe_item_create(
             OVAL_LINUX_OPENSHIFTSERVICE, NULL,
