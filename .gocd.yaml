@@ -1,0 +1,21 @@
+pipelines:
+  pipe1:
+    group: simple
+    materials:
+      mygit:  # this is the name of material
+        # says about type of material and url at once
+        git: https://github.com/evgenyz/openscap.git
+        branch: maint-1.3
+    stages:
+      - build: # name of stage
+          jobs:
+            build: # name of the job
+              tasks:
+               - exec:
+                   command: cmake
+                   working_directory: build
+                   arguments:
+                    - ".."
+               - exec:
+                   command: make
+                   working_directory: build
